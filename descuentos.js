@@ -1,11 +1,7 @@
-const precioOriginal =120;
-const descuento = 18;
+// const precioOriginal =120;
+// const descuento = 18;
 
-function calcularPrecioConDescuento(precio,descuento) {
-    const porcentajeConDescuento = 100 - descuento;
-    const precioFinal = (precio * porcentajeConDescuento) / 100 ;
-    return precioFinal;
-}
+
 
 
 // console.log({
@@ -15,18 +11,56 @@ function calcularPrecioConDescuento(precio,descuento) {
 //     precioFinal
 // })
 
-function OnClickButtonPriceDiscount(){
-    const inputPrice = document.getElementById("InputPrice");
-    const priceValue = inputPrice.value;
+//Calcular el precio final con descuento
 
-    const inputDiscount = document.getElementById("InputDiscount");
-    const discount = inputDiscount.value;
+function calcularPrecioConDescuento(precio,descuento) {
+    const porcentajeConDescuento = 100 - descuento;
+    const precioFinalDescuento = (precio * porcentajeConDescuento) / 100 ;
+    return precioFinalDescuento;
+}
 
-    const precioConDescuento = calcularPrecioConDescuento(priceValue,discount);
+// funcion OnClickButtonPriceDiscount
 
-    const resulP = document.getElementById("ResulP");
-    resulP.innerText = "El precio con descuento es $" + precioConDescuento;
+function OnClickButtonPriceDiscount() {
+
+// user inserta precio y coupon
+const inputPrice = document.getElementById("InputPrice");
+const valuePrice= inputPrice.value;
+
+const inputCoupon = document.getElementById("InputCoupon");
+const couponValue= inputCoupon.value;
 
 
+
+const coupons = [
+    {
+        name: "15forever",
+        discount: 15,
+    },
+    {
+        name: "30forever",
+        discount: 30,
+    },
+    {
+        name: "25forever",
+        discount: 25,
+    },
+];
+
+//comprobar si el cupon ingresado por el usuario se encuentra en nuestro array
+const userCoupon = coupons.find(function(coupon){
+        return coupon.name === couponValue;
+});
+
+if(!userCoupon){
+    alert("El cupón " + couponValue + "no es válido")
+} else {
+    const descuento = userCoupon.discount;
+    const precioConDescuento = calcularPrecioConDescuento(valuePrice,descuento);
+
+    const resulp = document.getElementById("ResulP");
+    resulp.innerText = "El precio con descuento es $" + precioConDescuento;
+
+}
 
 }
