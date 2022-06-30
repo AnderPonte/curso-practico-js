@@ -1,9 +1,6 @@
 // const precioOriginal =120;
 // const descuento = 18;
 
-
-
-
 // console.log({
 //     precioOriginal,
 //     descuento,
@@ -29,8 +26,6 @@ const valuePrice= inputPrice.value;
 
 const inputCoupon = document.getElementById("InputCoupon");
 const couponValue= inputCoupon.value;
-
-
 
 const coupons = [
     {
